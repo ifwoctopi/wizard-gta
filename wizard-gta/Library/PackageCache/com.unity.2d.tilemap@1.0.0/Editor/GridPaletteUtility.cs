@@ -71,8 +71,10 @@ namespace UnityEditor.Tilemaps
             string defaultPath = ProjectBrowser.s_LastInteractedProjectBrowser ? ProjectBrowser.s_LastInteractedProjectBrowser.GetActiveFolderPath() : "Assets";
             string folderPath = EditorUtility.SaveFolderPanel("Create palette into folder ", defaultPath, "");
             folderPath = FileUtil.GetProjectRelativePath(folderPath);
-            if (!TilePaletteSaveUtility.ValidateSaveFolder(folderPath))
+
+            if (string.IsNullOrEmpty(folderPath))
                 return null;
+
             return CreateNewPalette(folderPath, name, layout, cellSizing, cellSize, swizzle, sortMode, sortAxis);
         }
 
