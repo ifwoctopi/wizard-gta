@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7138686929145335315}
   - component: {fileID: 2378914289175897677}
-  m_Layer: 20
+  m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869315837
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 4836c09be31426e49b52ea966be0a3c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 4739468259652060004}
   - component: {fileID: 2410107273466835691}
   - component: {fileID: 3418993310767482148}
-  m_Layer: 20
+  m_Layer: 0
   m_Name: Enemy-Wizard
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7138686929145335315}
-  - {fileID: 1526179013581385585}
+  - {fileID: 202264453019449217}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6800700380647885842
@@ -133,6 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a092f9237ffac45b203c7a0f9fc1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fieldOfView: {fileID: 1210519826837136215}
+  spriteRenderer: {fileID: 4739468259652060004}
+  shadowRenderer: {fileID: 2378914289175897677}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -176,7 +179,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869315837
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 4836c09be31426e49b52ea966be0a3c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -221,7 +224,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07427168, y: 0.04400462}
+  m_Offset: {x: -0.013252735, y: -0.017014146}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -232,7 +235,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.49051762, y: 0.4398042}
+  m_Size: {x: 0.8566294, y: 0.86693454}
   m_EdgeRadius: 0
 --- !u!50 &3418993310767482148
 Rigidbody2D:
@@ -329,6 +332,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7421867652497327124, guid: 257ee7ad2c18eb04c887e867a25bfe81,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 6800700380647885842}
     - target: {fileID: 8328654065945963115, guid: 257ee7ad2c18eb04c887e867a25bfe81,
         type: 3}
       propertyPath: enemy
@@ -344,9 +352,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 257ee7ad2c18eb04c887e867a25bfe81, type: 3}
---- !u!4 &1526179013581385585 stripped
+--- !u!4 &202264453019449217 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7141996159413618738, guid: 257ee7ad2c18eb04c887e867a25bfe81,
+  m_CorrespondingSourceObject: {fileID: 8430160580727836866, guid: 257ee7ad2c18eb04c887e867a25bfe81,
     type: 3}
   m_PrefabInstance: {fileID: 8517261343745713987}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1210519826837136215 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7421867652497327124, guid: 257ee7ad2c18eb04c887e867a25bfe81,
+    type: 3}
+  m_PrefabInstance: {fileID: 8517261343745713987}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1145a6621c6f75847a15c713b6e91eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
