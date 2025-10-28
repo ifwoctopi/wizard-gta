@@ -12,6 +12,7 @@ public class EnemyScript : MonoBehaviour
     private int currentWaypoint = 0;
     private Transform chaseTarget;
     private bool isChasing = false;
+    public string playerTag = "player";
 
     void Update()
     {
@@ -84,7 +85,28 @@ public class EnemyScript : MonoBehaviour
         {
             spriteRenderer.flipX = false;
             shadowRenderer.flipX = false;
+
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // 1. CONDITIONAL CHECK: Verify the collision is with the Player
+        if (other.CompareTag(playerTag))
+        {
+            Debug.Log("Game Over! Enemy collided with: " + other.gameObject.name);
+
+            // 2. IMPLEMENT LOSE SCREEN LOGIC HERE:
+
+            // Option A: Load a new scene (The most common way for a "Lose Screen")
+            // You must ensure this scene is in your Build Settings!
+            //SceneManager.LoadScene("LoseScreen"); 
+
+            // Disable the player immediately
+            other.gameObject.SetActive(false); 
             
+            // Disable the enemy to prevent multiple trigger events
+            this.enabled = false;
         }
     }
 }
