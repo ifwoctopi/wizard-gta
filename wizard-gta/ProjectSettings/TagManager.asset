@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - WinObject
+  - Stone
   layers:
   - Default
   - TransparentFX
@@ -19,13 +21,13 @@ TagManager:
   - 
   - 
   - 
+  - Stone
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
+  - Wall
   - Layer 1
   - Layer 2
   - Layer 3

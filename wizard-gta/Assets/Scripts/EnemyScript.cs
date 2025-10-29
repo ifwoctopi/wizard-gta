@@ -13,7 +13,7 @@ public class EnemyScript : MonoBehaviour
     private Transform chaseTarget;
     private bool isChasing = false;
     public string playerTag = "player";
-    
+
     // --- Physics ---
     private Rigidbody2D rb;
     
@@ -58,6 +58,16 @@ public class EnemyScript : MonoBehaviour
     private bool returningToPatrol = false;
     private Vector3 patrolReturnPoint; // The waypoint to return to
     
+    // --- Backup System ---
+    [Header("Backup System")]
+    [Tooltip("Should this guard call for backup when detecting player?")]
+    public bool callsForBackup = true;
+    [Tooltip("Should this guard respond to backup calls from other guards?")]
+    public bool respondsToBackup = true;
+    private bool respondingToBackup = false;
+    private Vector3 backupLocation;
+    private bool hasCalledBackup = false; // To avoid calling multiple times
+    
     // --- Stuck Detection ---
     private Vector3 lastPosition;
     private float stuckTimer = 0f;
@@ -94,6 +104,41 @@ public class EnemyScript : MonoBehaviour
         if (alertManager == null)
         {
             Debug.LogWarning("AlertManager not found in scene. Alert system will not work.");
+        }
+        
+        // Subscribe to backup calls
+        if (respondsToBackup)
+        {
+            AlertManager.OnBackupCalled += OnBackupCallReceived;
+        }
+    }
+    
+    void OnDestroy()
+    {
+        // Unsubscribe from events to prevent memory leaks
+        if (respondsToBackup)
+        {
+            AlertManager.OnBackupCalled -= OnBackupCallReceived;
+        }
+    }
+    
+    /// <summary>
+    /// Called when another guard calls for backup
+    /// </summary>
+    void OnBackupCallReceived(Vector3 location, GameObject caller)
+    {
+        // Don't respond to your own backup call
+        if (caller == gameObject) return;
+        
+        // Only respond if not currently chasing or already responding
+        if (!isChasing && !respondingToBackup && respondsToBackup)
+        {
+            Debug.Log($"{gameObject.name} responding to backup call from {caller.name} at {location}");
+            respondingToBackup = true;
+            backupLocation = location;
+            
+            // Cancel lower priority activities
+            investigatingSound = false;
         }
     }
 
@@ -315,7 +360,62 @@ public class EnemyScript : MonoBehaviour
                 }
             }
         }
-        // Priority 4: Investigate sound if heard
+        // Priority 4: Respond to backup call
+        else if (respondingToBackup)
+        {
+            float distance = Vector3.Distance(transform.position, backupLocation);
+
+            if (distance > 1f) // stop distance
+            {
+                // Use pathfinding if available, otherwise direct movement
+                if (SimplePathfinding.Instance != null && SimplePathfinding.Instance.IsReady())
+                {
+                    // Try to find a path to the backup location
+                    List<Vector2> path = SimplePathfinding.Instance.FindPath(transform.position, backupLocation);
+                    
+                    if (path != null && path.Count > 0)
+                    {
+                        // Follow the path
+                        Vector2 nextWaypoint = path[0];
+                        Vector2 moveDir = (nextWaypoint - (Vector2)transform.position).normalized;
+                        Vector2 newPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
+                        rb.MovePosition(newPosition);
+                        FlipSprite(moveDir.x);
+                        fieldOfView.SetAimDirection(moveDir);
+                        fieldOfView.SetOrigin(transform.position);
+                    }
+                    else
+                    {
+                        // Pathfinding failed, try direct movement with avoidance
+                        Vector2 moveDir = ((Vector2)backupLocation - rb.position).normalized;
+                        moveDir = GetAvoidanceDirection(moveDir, distance);
+                        Vector2 newPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
+                        rb.MovePosition(newPosition);
+                        FlipSprite(moveDir.x);
+                        fieldOfView.SetAimDirection(moveDir);
+                        fieldOfView.SetOrigin(transform.position);
+                    }
+                }
+                else
+                {
+                    // No pathfinding available, use direct movement with avoidance
+                    Vector2 moveDir = ((Vector2)backupLocation - rb.position).normalized;
+                    moveDir = GetAvoidanceDirection(moveDir, distance);
+                    Vector2 newPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
+                    rb.MovePosition(newPosition);
+                    FlipSprite(moveDir.x);
+                    fieldOfView.SetAimDirection(moveDir);
+                    fieldOfView.SetOrigin(transform.position);
+                }
+            }
+            else
+            {
+                // Reached backup location, just stop and look around briefly
+                Debug.Log($"{gameObject.name} arrived at backup location");
+                respondingToBackup = false;
+            }
+        }
+        // Priority 5: Investigate sound if heard
         else if (investigatingSound)
         {
             // Move towards the sound location
@@ -340,7 +440,7 @@ public class EnemyScript : MonoBehaviour
                 Debug.Log("Enemy reached sound location, resuming patrol");
             }
         }
-        // Priority 5: Patrol waypoints
+        // Priority 6: Patrol waypoints
         else
         {
             // Patrol waypoints
@@ -400,10 +500,21 @@ public class EnemyScript : MonoBehaviour
         chaseTarget = target;
         isChasing = true;
         
-        // Report to alert system
+        // Cancel backup response when actively chasing
+        respondingToBackup = false;
+        
+        // Report to alert system and call for backup
         if (alertManager != null && target != null)
         {
-            alertManager.OnPlayerDetected(target.position, 1f);
+            alertManager.OnPlayerDetected(target.position, 1f, gameObject);
+            
+            // Call for backup (only once per detection)
+            if (callsForBackup && !hasCalledBackup)
+            {
+                alertManager.CallForBackup(target.position, gameObject);
+                hasCalledBackup = true;
+                Debug.Log($"{gameObject.name} calling for backup!");
+            }
         }
     }
 
@@ -414,6 +525,9 @@ public class EnemyScript : MonoBehaviour
         
         // Reset the timer when chase stops
         timeSinceLastSeenPlayer = 0f;
+        
+        // Reset backup flag (can call again on next detection)
+        hasCalledBackup = false;
         
         // Start investigating last known position
         if (hasLastKnownPosition)

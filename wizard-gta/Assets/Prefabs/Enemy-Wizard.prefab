@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4739468259652060004}
   - component: {fileID: 2410107273466835691}
   - component: {fileID: 3418993310767482148}
+  - component: {fileID: 8205749843455911120}
   m_Layer: 0
   m_Name: Enemy-Wizard
   m_TagString: Enemy
@@ -140,6 +141,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   speed: 2
+  playerTag: player
 --- !u!212 &4739468259652060004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -264,6 +266,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &8205749843455911120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5864255081139184876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a092f9237ffac45b203c7a0f9fc1a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fieldOfView: {fileID: 1210519826837136215}
+  spriteRenderer: {fileID: 0}
+  shadowRenderer: {fileID: 0}
+  waypoints: []
+  speed: 2
+  playerTag: player
 --- !u!1001 &8517261343745713987
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -61,6 +61,7 @@ public class AlertManager : MonoBehaviour
     public static event Action<float> OnAlertLevelChanged;
     public static event Action<float> OnHeatLevelChanged;
     public static event Action<Vector3> OnLastKnownPositionUpdated;
+    public static event Action<Vector3, GameObject> OnBackupCalled; // position, guard who called
     
     // Struct for storing sound memories
     [System.Serializable]
@@ -119,7 +120,7 @@ public class AlertManager : MonoBehaviour
     /// <summary>
     /// Called when a guard detects the player
     /// </summary>
-    public void OnPlayerDetected(Vector3 playerPosition, float detectionIntensity = 1f)
+    public void OnPlayerDetected(Vector3 playerPosition, float detectionIntensity = 1f, GameObject callingGuard = null)
     {
         // Update last known position
         lastKnownPlayerPosition = playerPosition;
@@ -143,6 +144,23 @@ public class AlertManager : MonoBehaviour
         {
             Debug.Log($"[AlertManager] Player detected! Alert: {currentAlertLevel:F2}, Heat: {currentHeatLevel:F2}");
         }
+    }
+    
+    /// <summary>
+    /// Called when a guard calls for backup (other guards respond to this location)
+    /// </summary>
+    public void CallForBackup(Vector3 playerPosition, GameObject callingGuard)
+    {
+        if (enableDebugLogs)
+        {
+            Debug.Log($"[AlertManager] BACKUP CALLED at {playerPosition} by {callingGuard.name}!");
+        }
+        
+        // Notify all guards
+        OnBackupCalled?.Invoke(playerPosition, callingGuard);
+        
+        // Also trigger detection to increase alert levels
+        OnPlayerDetected(playerPosition, 1.5f, callingGuard); // Higher intensity for backup calls
     }
     
     /// <summary>
