@@ -18,11 +18,11 @@ public class SoundListener : MonoBehaviour
     public LayerMask WallLayerMask = -1;
     
     [Header("Sound Investigation")]
-    [Tooltip("How long to investigate a sound before giving up")]
-    public float InvestigationDuration = 3f;
+    [Tooltip("How long to investigate a sound before giving up (set to 0 to disable timer)")]
+    public float InvestigationDuration = 0f;
     
     [Tooltip("How close to get to a sound source before stopping")]
-    public float InvestigationTolerance = 1f;
+    public float InvestigationTolerance = 0.5f;
     
     [Header("Debug")]
     [Tooltip("Show hearing range in Scene view")]
@@ -75,8 +75,8 @@ public class SoundListener : MonoBehaviour
     
     void Update()
     {
-        // Handle sound investigation timer
-        if (isInvestigatingSound)
+        // Handle sound investigation timer (only if duration is set)
+        if (isInvestigatingSound && InvestigationDuration > 0)
         {
             investigationTimer -= Time.deltaTime;
             if (investigationTimer <= 0)
