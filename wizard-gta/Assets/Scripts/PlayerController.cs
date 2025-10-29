@@ -8,6 +8,16 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private PlayerFOV playerFOV;
+    
+    // --- Sound System Integration ---
+    [Header("Sound Settings")]
+    [Tooltip("Time between footstep sounds while moving")]
+    public float footstepInterval = 0.4f;
+    
+    private SoundEmitter soundEmitter;
+    private float lastFootstepTime;
+    private bool wasMovingLastFrame = false;
+    
     private PlayerInput playerInput;
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -19,8 +29,26 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = new PlayerInput();
         rb = GetComponent<Rigidbody2D>();
+        
+        // Configure Rigidbody2D for proper physics
+        if (rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.gravityScale = 0f;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+        }
+        
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer
         shadow = transform.Find("Shadow").GetComponent<SpriteRenderer>();
+        
+        // --- Sound System Setup ---
+        soundEmitter = GetComponent<SoundEmitter>();
+        if (soundEmitter == null)
+        {
+            Debug.LogWarning("SoundEmitter component not found on the player GameObject. Sound system will not work.");
+        }
     }
 
     private void OnEnable()
@@ -31,8 +59,21 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         PlayerInput();
-        FlipSprite(); // Flip sprite in Update for responsiveness\
+        FlipSprite(); // Flip sprite in Update for responsiveness
         
+        // --- Sound System: Footstep Detection ---
+        bool isMoving = movement.magnitude > 0.1f;
+        if (isMoving && !wasMovingLastFrame)
+        {
+            // Just started moving - play first footstep
+            PlayFootstep();
+        }
+        else if (isMoving && Time.time - lastFootstepTime >= footstepInterval)
+        {
+            // Continue playing footsteps at intervals
+            PlayFootstep();
+        }
+        wasMovingLastFrame = isMoving;
     }
 
     private void FixedUpdate()
@@ -89,6 +130,31 @@ public class PlayerController : MonoBehaviour
             
             playerFOV.SetAimDirection(right);
             playerFOV.SetOrigin(transform.position);
+        }
+    }
+    
+    // --- Sound System Methods ---
+    
+    /// <summary>
+    /// Plays a footstep sound through the SoundEmitter
+    /// </summary>
+    private void PlayFootstep()
+    {
+        if (soundEmitter != null)
+        {
+            soundEmitter.EmitFootstep();
+            lastFootstepTime = Time.time;
+        }
+    }
+    
+    /// <summary>
+    /// Public method to emit loud sounds (for interactions, breaking objects, etc.)
+    /// </summary>
+    public void EmitInteractionSound(float intensity, float range)
+    {
+        if (soundEmitter != null)
+        {
+            soundEmitter.EmitLoudNoise(intensity, range);
         }
     }
 }

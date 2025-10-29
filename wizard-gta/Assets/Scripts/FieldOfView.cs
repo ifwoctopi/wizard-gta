@@ -37,7 +37,14 @@ public class FieldOfView : MonoBehaviour
         // Set up material
         visionMaterial = GetComponent<MeshRenderer>().material;
         if (showState)
+        {
             visionMaterial.color = Color.green; // default color
+            Debug.Log("FieldOfView: showState is TRUE, setting to green");
+        }
+        else
+        {
+            Debug.Log("FieldOfView: showState is FALSE, keeping material as-is");
+        }
     }
 
     void LateUpdate()
@@ -103,7 +110,8 @@ public class FieldOfView : MonoBehaviour
         if (distanceToPlayer > viewDistance)
         {
             detectionTimer = 0f;
-            visionMaterial.color = Color.green;
+            if (showState)
+                visionMaterial.color = Color.green;
             return;
         }
 
