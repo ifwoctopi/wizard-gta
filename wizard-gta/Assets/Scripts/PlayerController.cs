@@ -63,16 +63,28 @@ public class PlayerController : MonoBehaviour
         
         // --- Sound System: Footstep Detection ---
         bool isMoving = movement.magnitude > 0.1f;
-        if (isMoving && !wasMovingLastFrame)
+        
+        if (soundEmitter != null)
         {
-            // Just started moving - play first footstep
-            PlayFootstep();
+            if (isMoving && !wasMovingLastFrame)
+            {
+                // Just started moving - start continuous footstep audio
+                soundEmitter.StartFootstepAudio();
+            }
+            else if (!isMoving && wasMovingLastFrame)
+            {
+                // Just stopped moving - pause footstep audio
+                soundEmitter.PauseFootstepAudio();
+            }
+            
+            // Continue emitting footstep events for AI detection at intervals while moving
+            if (isMoving && Time.time - lastFootstepTime >= footstepInterval)
+            {
+                soundEmitter.EmitFootstep(); // For AI detection only, no audio playback
+                lastFootstepTime = Time.time;
+            }
         }
-        else if (isMoving && Time.time - lastFootstepTime >= footstepInterval)
-        {
-            // Continue playing footsteps at intervals
-            PlayFootstep();
-        }
+        
         wasMovingLastFrame = isMoving;
     }
 
@@ -134,18 +146,6 @@ public class PlayerController : MonoBehaviour
     }
     
     // --- Sound System Methods ---
-    
-    /// <summary>
-    /// Plays a footstep sound through the SoundEmitter
-    /// </summary>
-    private void PlayFootstep()
-    {
-        if (soundEmitter != null)
-        {
-            soundEmitter.EmitFootstep();
-            lastFootstepTime = Time.time;
-        }
-    }
     
     /// <summary>
     /// Public method to emit loud sounds (for interactions, breaking objects, etc.)
