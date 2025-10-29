@@ -32,9 +32,55 @@ public class SoundEmitter : MonoBehaviour
     [Tooltip("Enable automatic surface detection (requires SurfaceDetector component)")]
     public bool useAutomaticSurfaceDetection = true;
 
+    [Header("Audio Settings")]
+    [Tooltip("Audio clip for footstep sounds")]
+    public AudioClip footstepSound;
+    
+    [Tooltip("Base volume for footstep sounds (will be multiplied by surface type)")]
+    [Range(0f, 1f)]
+    public float baseFootstepVolume = 0.5f;
+    
+    [Tooltip("AudioSource component for playing sounds (will be auto-created if not assigned)")]
+    public AudioSource audioSource;
+
     [Header("Debug")]
     [Tooltip("If enabled, logs footstep/loud noise emissions with computed intensity/range.")]
     public bool enableEmitterDebugLogs = false;
+    
+    private SurfaceType lastSurfaceType = SurfaceType.Grass;
+    
+    private void Awake()
+    {
+        // Get or create AudioSource component
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+        }
+        
+        // Configure AudioSource for continuous footstep playback
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 0f; // 2D sound
+        audioSource.loop = true; // Loop the footstep audio
+        audioSource.clip = footstepSound;
+    }
+    
+    private void Update()
+    {
+        // Update volume if surface type changed while playing
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            SurfaceType currentSurface = useAutomaticSurfaceDetection ? GetDetectedSurface() : CurrentSurface;
+            if (currentSurface != lastSurfaceType)
+            {
+                UpdateFootstepVolume();
+                lastSurfaceType = currentSurface;
+            }
+        }
+    }
 
     /// <summary>
     /// Gets the multiplier for the current surface type.
@@ -55,7 +101,60 @@ public class SoundEmitter : MonoBehaviour
     }
 
     /// <summary>
-    /// Generates a footstep sound event. Called by player movement logic.
+    /// Starts playing continuous footstep audio. Called when player starts moving.
+    /// </summary>
+    public void StartFootstepAudio()
+    {
+        if (footstepSound != null && audioSource != null && !audioSource.isPlaying)
+        {
+            UpdateFootstepVolume();
+            audioSource.Play();
+            
+            if (enableEmitterDebugLogs)
+            {
+                Debug.Log($"[SoundEmitter:{gameObject.name}] Started footstep audio");
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Pauses footstep audio. Called when player stops moving.
+    /// </summary>
+    public void PauseFootstepAudio()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Pause();
+            
+            if (enableEmitterDebugLogs)
+            {
+                Debug.Log($"[SoundEmitter:{gameObject.name}] Paused footstep audio");
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Updates the footstep volume based on current surface type
+    /// </summary>
+    private void UpdateFootstepVolume()
+    {
+        if (audioSource == null) return;
+        
+        SurfaceType surfaceToUse = useAutomaticSurfaceDetection ? GetDetectedSurface() : CurrentSurface;
+        float multiplier = GetSurfaceMultiplier(surfaceToUse);
+        float finalVolume = baseFootstepVolume * multiplier;
+        finalVolume = Mathf.Clamp01(finalVolume);
+        
+        audioSource.volume = finalVolume;
+        
+        if (enableEmitterDebugLogs)
+        {
+            Debug.Log($"[SoundEmitter:{gameObject.name}] Updated volume | surface={surfaceToUse} | volume={finalVolume:F2}");
+        }
+    }
+    
+    /// <summary>
+    /// Generates a footstep sound event for AI detection. Called by player movement logic at intervals.
     /// </summary>
     public void EmitFootstep()
     {
@@ -66,6 +165,7 @@ public class SoundEmitter : MonoBehaviour
         float finalIntensity = BaseNoiseIntensity * multiplier;
         float finalRange = MaxSoundRange * multiplier; // scale radius with surface
 
+        // Generate gameplay sound event for AI detection
         if (NoiseManager.Instance != null)
         {
             NoiseManager.Instance.GenerateSound(transform.position, finalIntensity, finalRange);
