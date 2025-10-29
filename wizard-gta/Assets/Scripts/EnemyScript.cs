@@ -661,10 +661,7 @@ public class EnemyScript : MonoBehaviour
             
             // Disable the enemy to prevent multiple trigger events
             this.enabled = false;
-            
-            // Optional: Load lose screen scene
-            // Uncomment and add your scene name:
-            // UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScreen");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScreen");
         }
     }
 }
