@@ -40,11 +40,24 @@ namespace Cainos.PixelArtTopDown_Basic
         {
             target.layer = LayerMask.NameToLayer(layer);
 
-            target.GetComponent<SpriteRenderer>().sortingLayerName = sortingLayer;
+            // Update SpriteRenderers
+            SpriteRenderer mainSr = target.GetComponent<SpriteRenderer>();
+            if (mainSr != null)
+            {
+                mainSr.sortingLayerName = sortingLayer;
+            }
+            
             SpriteRenderer[] srs = target.GetComponentsInChildren<SpriteRenderer>();
             foreach (SpriteRenderer sr in srs)
             {
                 sr.sortingLayerName = sortingLayer;
+            }
+            
+            // Also update MeshRenderers (for vision cones, etc.)
+            MeshRenderer[] mrs = target.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer mr in mrs)
+            {
+                mr.sortingLayerName = sortingLayer;
             }
         }
 
