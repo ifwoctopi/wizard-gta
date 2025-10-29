@@ -38835,6 +38835,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.12
       objectReference: {fileID: 0}
+    - target: {fileID: 5504185145772621385, guid: 03ddb69c39508be4b943995d70a27923,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504185145772621385, guid: 03ddb69c39508be4b943995d70a27923,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 75935f0439d991540b125580908fafb2, type: 2}
     - target: {fileID: 5988271278643626490, guid: 03ddb69c39508be4b943995d70a27923,
         type: 3}
       propertyPath: m_IsTrigger
@@ -40294,6 +40304,9 @@ MonoBehaviour:
   MaxSoundRange: 2
   CurrentSurface: 0
   useAutomaticSurfaceDetection: 1
+  footstepSound: {fileID: 8300000, guid: 4e09ac2e5acf42b49bf0a8c5a78ab239, type: 3}
+  baseFootstepVolume: 0.5
+  audioSource: {fileID: 0}
   enableEmitterDebugLogs: 0
 --- !u!1001 &5724624599686979093
 PrefabInstance:
