@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
         // If moving right, face right; if moving left, face left
         if (movement.x > 0.01f)
         {
-            Vector3 rightVector = new Vector3(0.34f, -0.12f, 0f);
+            Vector3 rightVector = new Vector3(0.34f, -0.12f, -1f);
             spriteRenderer.flipX = true;
             shadow.flipX = true;
             playerFOV.SetAimDirection(up);
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (movement.x < -0.01f)
         {
-            Vector3 leftVector = new Vector3(-0.34f, -0.17f, 0f);
+            Vector3 leftVector = new Vector3(-0.34f, -0.17f, -1f);
             spriteRenderer.flipX = false;
             shadow.flipX = false;
             playerFOV.SetAimDirection(down);

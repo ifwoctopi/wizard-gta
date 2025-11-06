@@ -30,7 +30,6 @@ public class PlayerFOV : MonoBehaviour
 
         // Set up material
         visionMaterial = GetComponent<MeshRenderer>().material;
-        visionMaterial.color = Color.black; // default color
     }
 
     void LateUpdate()
@@ -103,7 +102,6 @@ public class PlayerFOV : MonoBehaviour
         if (distanceToPlayer > viewDistance)
         {
             detectionTimer = 0f;
-            visionMaterial.color = Color.black;
             return;
         }
 
@@ -126,14 +124,12 @@ public class PlayerFOV : MonoBehaviour
 
                 if (detectionTimer >= partialDetectionTime)
                 {
-                    visionMaterial.color = Color.black;
                     if (showCone)
                         Debug.Log("Chasing");
                     isAlert = true;
                 }
                 else
                 {
-                    visionMaterial.color = Color.black;
                     if (showCone)
                         Debug.Log("Confused");
                     isAlert = false;
@@ -145,7 +141,6 @@ public class PlayerFOV : MonoBehaviour
 
         // Player blocked or outside cone
         detectionTimer = 0f;
-        visionMaterial.color = Color.black;
         if (showCone)
             Debug.Log("Not detected");
         isAlert = false;

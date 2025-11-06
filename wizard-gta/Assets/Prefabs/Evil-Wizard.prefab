@@ -97,6 +97,8 @@ GameObject:
   - component: {fileID: 4198110083253751353}
   - component: {fileID: 5988271278643626490}
   - component: {fileID: 81310479569943528}
+  - component: {fileID: 249369496890734450}
+  - component: {fileID: 451718962358826773}
   m_Layer: 20
   m_Name: Evil-Wizard
   m_TagString: Player
@@ -135,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   playerFOV: {fileID: 6837526571837506396}
+  footstepInterval: 0.4
 --- !u!212 &4198110083253751353
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -259,6 +262,56 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &249369496890734450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7313141976309071711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268077eea78fb11448fe5aaa7fc00d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseNoiseIntensity: 3
+  MaxSoundRange: 2
+  CurrentSurface: 0
+  useAutomaticSurfaceDetection: 1
+  footstepSound: {fileID: 8300000, guid: 4e09ac2e5acf42b49bf0a8c5a78ab239, type: 3}
+  baseFootstepVolume: 0.5
+  audioSource: {fileID: 0}
+  enableEmitterDebugLogs: 0
+--- !u!114 &451718962358826773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7313141976309071711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8682c33948c85c44a83a6b9e0f5321ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionDistance: 1
+  surfaceLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  checkInterval: 0.1
+  rayOriginDownOffset: 0.1
+  grassTag: Grass
+  carpetTag: Carpet
+  stoneTag: Stone
+  metalTag: Metal
+  glassTag: Glass
+  useLayerNamesForDetection: 1
+  grassLayerName: Default
+  carpetLayerName: Carpet
+  stoneLayerName: Stone
+  metalLayerName: Metal
+  glassLayerName: Glass
+  enableDebugLogs: 1
 --- !u!1001 &7856080591738172139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -267,15 +320,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8814317792802075789}
     m_Modifications:
+    - target: {fileID: 2406237863359728802, guid: ea09c78e937812143831020918ea7361,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 75935f0439d991540b125580908fafb2, type: 2}
+    - target: {fileID: 3739572759098798519, guid: ea09c78e937812143831020918ea7361,
+        type: 3}
+      propertyPath: viewDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5274647970520612870, guid: ea09c78e937812143831020918ea7361,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.32999992
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 5274647970520612870, guid: ea09c78e937812143831020918ea7361,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9300001
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 5274647970520612870, guid: ea09c78e937812143831020918ea7361,
         type: 3}
