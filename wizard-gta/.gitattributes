@@ -1,4 +1,48 @@
+# Set default line endings for text files
+* text=auto eol=lf
+
+# Unity Smart Merge Configuration (MANDATORY)
+# These files are text-based YAML and need Unity's special merge tool.
+*.unity merge=unityyamlmerge
+*.prefab merge=unityyamlmerge
+*.asset merge=unityyamlmerge
+*.mat merge=unityyamlmerge
+*.anim merge=unityyamlmerge
+*.controller merge=unityyamlmerge
+*.mask merge=unityyamlmerge
+*.giparams merge=unityyamlmerge
+*.physicMaterial merge=unityyamlmerge
+*.physicMaterial2D merge=unityyamlmerge
+*.spriteatlas merge=unityyamlmerge
+
+# Large Binary Files to Track with Git LFS
+# Most common image, audio, model, and specialized data files go here.
+*.bmp filter=lfs diff=lfs merge=lfs -text
+*.dds filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.tga filter=lfs diff=lfs merge=lfs -text
+*.tiff filter=lfs diff=lfs merge=lfs -text
+*.hdr filter=lfs diff=lfs merge=lfs -text
+*.wav filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+*.ogg filter=lfs diff=lfs merge=lfs -text
+*.aif filter=lfs diff=lfs merge=lfs -text
+*.mov filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.fbx filter=lfs diff=lfs merge=lfs -text
+*.obj filter=lfs diff=lfs merge=lfs -text
+*.blend filter=lfs diff=lfs merge=lfs -text
 *.psd filter=lfs diff=lfs merge=lfs -text
-*.dylib filter=lfs diff=lfs merge=lfs -text
-wizard-gta/Library/ArtifactDB filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
+
+# Binary Unity-Specific Assets that MUST be tracked with LFS
+# These are binary even with Force Text serialization.
+LightingData.asset filter=lfs diff=lfs merge=lfs -text
+TerrainData.asset filter=lfs diff=lfs merge=lfs -text
+NavMesh-*.asset filter=lfs diff=lfs merge=lfs -text
+
+# Your custom dylib is still fine to keep
+*.dylib filter=lfs diff=lfs merge=lfs -text
