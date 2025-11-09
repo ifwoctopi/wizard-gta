@@ -15,7 +15,7 @@ C:/Users/ejlew/OneDrive/Documents/GitHub/wizard-gta/wizard-gta
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-51301
+54086
 Successfully changed project path to: C:/Users/ejlew/OneDrive/Documents/GitHub/wizard-gta/wizard-gta
 C:/Users/ejlew/OneDrive/Documents/GitHub/wizard-gta/wizard-gta
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,14 +49,14 @@ C:/Users/ejlew/OneDrive/Documents/GitHub/wizard-gta/wizard-gta
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [17732]  Target information:
+Player connection [2744]  Target information:
 
-Player connection [17732]  * "[IP] 172.16.18.25 [Port] 0 [Flags] 2 [Guid] 2243107848 [EditorId] 2243107848 [Version] 1048832 [Id] WindowsEditor(7,ElijahsPC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [2744]  * "[IP] 172.16.18.25 [Port] 0 [Flags] 2 [Guid] 3023474986 [EditorId] 3023474986 [Version] 1048832 [Id] WindowsEditor(7,ElijahsPC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [17732] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [17732] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [2744] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [2744] Host joined alternative multi-casting on [225.0.0.222:34997]...
 [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-Refreshing native plugins compatible for Editor in 21.10 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 210.33 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.46f1 (8e9b8558c41a)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.46f1/Editor/Data/Resources/UnitySubsystems
@@ -72,44 +72,44 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.46f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.46f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.46f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56272
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56300
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.46f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.006933 seconds.
-- Loaded All Assemblies, in  0.310 seconds
+Registered in 0.005175 seconds.
+- Loaded All Assemblies, in  0.663 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.231 seconds
-Domain Reload Profiling: 540ms
-	BeginReloadAssembly (106ms)
+- Finished resetting the current domain, in  0.207 seconds
+Domain Reload Profiling: 868ms
+	BeginReloadAssembly (81ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (30ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (51ms)
-	LoadAllAssembliesAndSetupDomain (114ms)
-		LoadAssemblies (104ms)
+	RebuildCommonClasses (142ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (44ms)
+	LoadAllAssembliesAndSetupDomain (387ms)
+		LoadAssemblies (79ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (112ms)
-			TypeCache.Refresh (111ms)
-				TypeCache.ScanAssembly (100ms)
+		AnalyzeDomain (386ms)
+			TypeCache.Refresh (385ms)
+				TypeCache.ScanAssembly (376ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (1ms)
-	FinalizeReload (232ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (207ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (193ms)
+		SetupLoadedEditorAssemblies (173ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (8ms)
+			InitializePlatformSupportModulesInManaged (7ms)
 			SetLoadedEditorAssemblies (6ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (135ms)
-			ProcessInitializeOnLoadMethodAttributes (42ms)
+			ProcessInitializeOnLoadAttributes (113ms)
+			ProcessInitializeOnLoadMethodAttributes (45ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -119,55 +119,54 @@ Worker process is ready to serve import requests
 Caller must complete domain reload
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.654 seconds
+- Loaded All Assemblies, in  0.688 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.841 seconds
-Domain Reload Profiling: 1491ms
-	BeginReloadAssembly (111ms)
+- Finished resetting the current domain, in  0.836 seconds
+Domain Reload Profiling: 1521ms
+	BeginReloadAssembly (109ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (16ms)
-	RebuildCommonClasses (24ms)
+	RebuildCommonClasses (26ms)
 	RebuildNativeTypeToScriptingClass (7ms)
 	initialDomainReloadingComplete (34ms)
-	LoadAllAssembliesAndSetupDomain (474ms)
-		LoadAssemblies (340ms)
+	LoadAllAssembliesAndSetupDomain (508ms)
+		LoadAssemblies (317ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (199ms)
-			TypeCache.Refresh (157ms)
-				TypeCache.ScanAssembly (142ms)
-			ScanForSourceGeneratedMonoScriptInfo (32ms)
+		AnalyzeDomain (254ms)
+			TypeCache.Refresh (213ms)
+				TypeCache.ScanAssembly (198ms)
+			ScanForSourceGeneratedMonoScriptInfo (31ms)
 			ResolveRequiredComponents (9ms)
-	FinalizeReload (841ms)
+	FinalizeReload (837ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (714ms)
+		SetupLoadedEditorAssemblies (712ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (5ms)
 			SetLoadedEditorAssemblies (3ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (87ms)
-			ProcessInitializeOnLoadAttributes (472ms)
-			ProcessInitializeOnLoadMethodAttributes (142ms)
+			ProcessInitializeOnLoadAttributes (473ms)
+			ProcessInitializeOnLoadMethodAttributes (138ms)
 			AfterProcessingInitializeOnLoad (5ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (6ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 10.85 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (5ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 10.73 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 7386 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 67 unused Assets / (1.0 MB). Loaded Objects now: 7844.
-Memory consumption went from 262.2 MB to 261.2 MB.
-Total: 10.152200 ms (FindLiveObjects: 0.439400 ms CreateObjectMapping: 0.362100 ms MarkObjects: 8.959400 ms  DeleteObjects: 0.390600 ms)
+Memory consumption went from 262.5 MB to 261.5 MB.
+Total: 7.499500 ms (FindLiveObjects: 0.431000 ms CreateObjectMapping: 0.323500 ms MarkObjects: 6.392100 ms  DeleteObjects: 0.352400 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:scripting/monoscript/fileName/WantController.cs: cf91a5f56725b193a37247ea5ec4199a -> 
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
@@ -181,384 +180,97 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 268313.809536 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Altar 01.prefab
-  artifactKey: Guid(c5bdca1933fde624698bb8c6d6daa44b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Altar 01.prefab using Guid(c5bdca1933fde624698bb8c6d6daa44b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+  Time since last request: 348211.181373 seconds.
+  path: Assets/Prefabs/Enemy-Wizard.prefab
+  artifactKey: Guid(d049b76a960739f4e97c53c1c4bcb8e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Enemy-Wizard.prefab using Guid(d049b76a960739f4e97c53c1c4bcb8e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'c3b06a65d036f7830e6264dd5c246ff8') in 0.278573 seconds
+ -> (artifact id: 'f8e93a43f21b6f4b525e253e6b3adc11') in 0.230505 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 53
+Number of asset objects unloaded after import = 46
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000039 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Chest 01 Open.prefab
-  artifactKey: Guid(17b0c1ef334d17e4bbb74c4778001705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Chest 01 Open.prefab using Guid(17b0c1ef334d17e4bbb74c4778001705) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+  Time since last request: 51.773936 seconds.
+  path: Assets/Prefabs/Evil-Wizard.prefab
+  artifactKey: Guid(03ddb69c39508be4b943995d70a27923) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Evil-Wizard.prefab using Guid(03ddb69c39508be4b943995d70a27923) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '14f6206c3b70e77b7834c08ebfa1cf4c') in 0.014436 seconds
+ -> (artifact id: 'fd7f9214b8437ad92365eaa9bad4bda9') in 0.036551 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 16
+Number of asset objects unloaded after import = 32
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Rune Pillar X2.prefab
-  artifactKey: Guid(6d6991dbbdeecb1488bbf78c063d1235) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Rune Pillar X2.prefab using Guid(6d6991dbbdeecb1488bbf78c063d1235) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '033fac230d3ce0969704537db6023f73') in 0.021878 seconds
+  Time since last request: 54.404654 seconds.
+  path: Assets/Prefabs/FieldOfView.prefab
+  artifactKey: Guid(257ee7ad2c18eb04c887e867a25bfe81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/FieldOfView.prefab using Guid(257ee7ad2c18eb04c887e867a25bfe81) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '6c5d68ee6264a2690ddb29d19988471a') in 0.002295 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 22
+Number of asset objects unloaded after import = 7
 ========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Struct - Stairs S 01 L.prefab
-  artifactKey: Guid(a92434f05fc24a2408687e0356655548) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Struct - Stairs S 01 L.prefab using Guid(a92434f05fc24a2408687e0356655548) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '21914aff7e5ec8e5518a6dedc90cafeb') in 0.028384 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 25
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Chest 01.prefab
-  artifactKey: Guid(99597c7b4aa47494fb2b6061505735da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Chest 01.prefab using Guid(99597c7b4aa47494fb2b6061505735da) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'b4937047438f8e49837d66215a68aebd') in 0.020052 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 16
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Statue 01.prefab
-  artifactKey: Guid(d730038d263986f4dac93230e1dd62b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Statue 01.prefab using Guid(d730038d263986f4dac93230e1dd62b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '233c30000d59eed3f95c6c796b894deb') in 0.017345 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 16
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Struct - Stairs E 02.prefab
-  artifactKey: Guid(74908d4e572f4c541baeae9f5c236a36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Struct - Stairs E 02.prefab using Guid(74908d4e572f4c541baeae9f5c236a36) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '69b33694fd4aa7f435b8db9b1caf0cd7') in 0.018366 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 27
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Rune Pillar X3.prefab
-  artifactKey: Guid(4fad9c4de6b725a43bb1200ed9479c08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Rune Pillar X3.prefab using Guid(4fad9c4de6b725a43bb1200ed9479c08) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'de0b1f00dd21ec0cb94541aac3ef8f8d') in 0.018161 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 21
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Stone 01.prefab
-  artifactKey: Guid(6d69371a87148ee4dac7b2b814437ffd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Stone 01.prefab using Guid(6d69371a87148ee4dac7b2b814437ffd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '993bced85a3a2442ff3b8d1a1abb6cdf') in 0.019093 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 15
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Struct - Gate 01.prefab
-  artifactKey: Guid(4be821d0b78ad5043985b57b738e951b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Struct - Gate 01.prefab using Guid(4be821d0b78ad5043985b57b738e951b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'b37dce58520af3a4eb495eb0d6ddd8e6') in 0.022270 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 30
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Road Sign 01 E.prefab
-  artifactKey: Guid(b823debd04fd63f4d8e579210fe0ff20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Road Sign 01 E.prefab using Guid(b823debd04fd63f4d8e579210fe0ff20) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '138477516acd80a376f61ea153c64fab') in 0.024709 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 16
-========================================================================
-Received Import Request.
-  Time since last request: 0.000028 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Stone Coffin 01 H.prefab
-  artifactKey: Guid(42d58802fe231b14c8692b0c06082f5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Stone Coffin 01 H.prefab using Guid(42d58802fe231b14c8692b0c06082f5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'e5fe8a09e3a933e5070bb2d82af5043f') in 0.027965 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 16
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Well 01.prefab
-  artifactKey: Guid(91afc0649ae41a64c860a5d49f05ff40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Well 01.prefab using Guid(91afc0649ae41a64c860a5d49f05ff40) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '19455bce264f66e2b0e48920da493be9') in 0.022419 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 16
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Stone Bench 01 W.prefab
-  artifactKey: Guid(8eb546cfc24c8c24196899cee5797135) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Stone Bench 01 W.prefab using Guid(8eb546cfc24c8c24196899cee5797135) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '016d8f51a6e796beca925da545f684aa') in 0.020731 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 16
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Gravestone 01.prefab
-  artifactKey: Guid(6d9a1504606c57143b1a8bbc2249aabe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Props - Gravestone 01.prefab using Guid(6d9a1504606c57143b1a8bbc2249aabe) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'c7c06b6f0cb78eb9f5abea165fc02b1b') in 0.018736 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 16
-========================================================================
-Received Import Request.
-  Time since last request: 1.131043 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Struct - Stairs S 02 R.prefab
-  artifactKey: Guid(b7a5fce6e52ebbf488a8e8516c6692cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Props/PF Struct - Stairs S 02 R.prefab using Guid(b7a5fce6e52ebbf488a8e8516c6692cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '715d896e0f6ee2fcea8ac894cf72a2a0') in 0.021441 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 25
-========================================================================
-Received Import Request.
-  Time since last request: 14.912856 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Material/MT Shadow.mat
-  artifactKey: Guid(6f3f1f0060a4d6a4980ea3283643fbdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Material/MT Shadow.mat using Guid(6f3f1f0060a4d6a4980ea3283643fbdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '0be98b79c6ab1076818c279485240b03') in 0.028429 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 6.994587 seconds.
-  path: Assets/background-assets/Dungeon Objects/PSD/fire_trap.psd
-  artifactKey: Guid(cd34c67124ad22f4cb913a2991f3a5d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/background-assets/Dungeon Objects/PSD/fire_trap.psd using Guid(cd34c67124ad22f4cb913a2991f3a5d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '95378669405e1a3add0960017d11265e') in 0.030328 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.775226 seconds.
-  path: Assets/background-assets/Pixel Lands Dungeons Demo/dungeons_demo_animated.png
-  artifactKey: Guid(81c342cb753bdd74481ffdfa01a40995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/background-assets/Pixel Lands Dungeons Demo/dungeons_demo_animated.png using Guid(81c342cb753bdd74481ffdfa01a40995) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'f6e41c9100158b964cf16710b5cacb32') in 0.014853 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.994478 seconds.
-  path: Assets/background-assets/PNG/decorative_cracks_floor.png
-  artifactKey: Guid(0c75058016e9cb840b480103f1098d58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/background-assets/PNG/decorative_cracks_floor.png using Guid(0c75058016e9cb840b480103f1098d58) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'ab3ae929595825053841d0b0043f04f9') in 0.012608 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.008575 seconds.
-  path: Assets/background-assets/PNG/fire_animation2.png
-  artifactKey: Guid(5e3ed2532f5187542a67a636bf7158b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/background-assets/PNG/fire_animation2.png using Guid(5e3ed2532f5187542a67a636bf7158b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '0cb16d99f04754716e8da797695f796c') in 0.013734 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.009119 seconds.
-  path: Assets/background-assets/PNG/Other_objects.png
-  artifactKey: Guid(0d7de802153738449ba2455586f779dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/background-assets/PNG/Other_objects.png using Guid(0d7de802153738449ba2455586f779dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'ef51a4436a72622166f5d30bfa23ed48') in 0.012442 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.002473 seconds.
-  path: Assets/background-assets/PNG/trap_animation.png
-  artifactKey: Guid(5d73980ceea3a8840b75e66c4e212d01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/background-assets/PNG/trap_animation.png using Guid(5d73980ceea3a8840b75e66c4e212d01) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '385f3f3d3d820c0b02b714a0db7bbbf7') in 0.013767 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.004132 seconds.
-  path: Assets/background-assets/PNG/Water_coasts_animation.png
-  artifactKey: Guid(b5505e592ba145d40a2cfc99e3f00685) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/background-assets/PNG/Water_coasts_animation.png using Guid(b5505e592ba145d40a2cfc99e3f00685) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'f397b4068c4a8b018e6d27fb8d208fe5') in 0.018271 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 1.156284 seconds.
-  path: Assets/background-assets/PSD/decorative_cracks_coasts_animation.psd
-  artifactKey: Guid(16dd1d6c8f0bfab489ceea460897be63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/background-assets/PSD/decorative_cracks_coasts_animation.psd using Guid(16dd1d6c8f0bfab489ceea460897be63) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'a53638d94fb57b7a764876eb6b1f2682') in 0.014004 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.002214 seconds.
-  path: Assets/background-assets/PSD/fire_animation.psd
-  artifactKey: Guid(7d482b8b2f425ff43ae0b71a4ce08c5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/background-assets/PSD/fire_animation.psd using Guid(7d482b8b2f425ff43ae0b71a4ce08c5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'b4f1e057df82cbc8c36df7910af41fe2') in 0.015415 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/background-assets/PSD/pedestals.psd
-  artifactKey: Guid(76214f542c0475b4ebb49cf48f1104d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/background-assets/PSD/pedestals.psd using Guid(76214f542c0475b4ebb49cf48f1104d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '88abb2449a8aae717c1a146852e4ca0c') in 0.016527 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.001492 seconds.
-  path: Assets/background-assets/PSD/water_details_animation.psd
-  artifactKey: Guid(2616edcc28bddbc46b1e230695c92881) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/background-assets/PSD/water_details_animation.psd using Guid(2616edcc28bddbc46b1e230695c92881) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '66eff57077f81cffc2e4225199bc85b5') in 0.017162 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 4.564152 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Texture/TX Props.png
-  artifactKey: Guid(29c9cded5e558164aaf8c9bf08aa1510) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Texture/TX Props.png using Guid(29c9cded5e558164aaf8c9bf08aa1510) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'b3e888ce388d8dd178a9d158c1e7c667') in 0.100114 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 50
-========================================================================
-Received Import Request.
-  Time since last request: 0.677515 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Tile Palette/TP Wall.prefab
-  artifactKey: Guid(8d8700121f1eb2c4abda7e8a3dafab76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Tile Palette/TP Wall.prefab using Guid(8d8700121f1eb2c4abda7e8a3dafab76) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '36add9ebfd92a9cd7890736f22f95c11') in 0.332892 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 141
-========================================================================
-Received Import Request.
-  Time since last request: 7.760937 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Bush 01.prefab
-  artifactKey: Guid(a0a71fda412ad0941ab44f1732ea4c1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Bush 01.prefab using Guid(a0a71fda412ad0941ab44f1732ea4c1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'f1a78058c8bf624d62fbd48fca9e24b2') in 0.015012 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 15
-========================================================================
-Received Import Request.
-  Time since last request: 0.000124 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Bush 05.prefab
-  artifactKey: Guid(9fb66d8c9d3b5194a82e9eed65a54afb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Bush 05.prefab using Guid(9fb66d8c9d3b5194a82e9eed65a54afb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '2b12d769e290667bc9b913f9aa1ad9ce') in 0.018382 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 15
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Grass 02.prefab
-  artifactKey: Guid(2d546d2d8b016864ab41e2185c250eb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Grass 02.prefab using Guid(2d546d2d8b016864ab41e2185c250eb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'b8f6c989b18a1662a2df49527ef27b12') in 0.015666 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 9
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Grass 05.prefab
-  artifactKey: Guid(019ab1af1d7a4b742a982c009534c058) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Grass 05.prefab using Guid(019ab1af1d7a4b742a982c009534c058) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '27989b8df8c976d6df2eac4814da72f5') in 0.013536 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 9
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Grass 09.prefab
-  artifactKey: Guid(424ccba55881d2743a04e1f1a4947e4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Grass 09.prefab using Guid(424ccba55881d2743a04e1f1a4947e4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '6340dbef0af7f5f46a519c9c562920eb') in 0.016838 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 9
-========================================================================
-Received Import Request.
-  Time since last request: 0.000073 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Grass 12.prefab
-  artifactKey: Guid(1dc4948f20ddc324f84c815af63aa6a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Grass 12.prefab using Guid(1dc4948f20ddc324f84c815af63aa6a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '21742002a449fc0a2a87d5863c92c13a') in 0.015175 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 9
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Tree 01.prefab
-  artifactKey: Guid(f681a54372d73d74785b9c9d4ac477e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Tree 01.prefab using Guid(f681a54372d73d74785b9c9d4ac477e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '29568cd9369315296d9191895405be32') in 0.018980 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 22
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Grass 11.prefab
-  artifactKey: Guid(4800845c2c4caa84eb6194552ae9c841) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cainos/Pixel Art Top Down - Basic/Prefab/Plant/PF Plant - Grass 11.prefab using Guid(4800845c2c4caa84eb6194552ae9c841) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '7c2b3813fe4cfb49a4eebeebe0f7e731') in 0.016565 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 9
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.230 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.097 seconds
+Domain Reload Profiling: 2324ms
+	BeginReloadAssembly (820ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (657ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (50ms)
+	RebuildCommonClasses (34ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (38ms)
+	LoadAllAssembliesAndSetupDomain (322ms)
+		LoadAssemblies (376ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (24ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (17ms)
+	FinalizeReload (1098ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (842ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (121ms)
+			ProcessInitializeOnLoadAttributes (524ms)
+			ProcessInitializeOnLoadMethodAttributes (179ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (24ms)
+Refreshing native plugins compatible for Editor in 12.68 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 7230 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 40 unused Assets / (0.9 MB). Loaded Objects now: 7909.
+Memory consumption went from 239.9 MB to 239.0 MB.
+Total: 8.013400 ms (FindLiveObjects: 0.516000 ms CreateObjectMapping: 0.366800 ms MarkObjects: 6.779100 ms  DeleteObjects: 0.350500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
 AssetImportWorker is now disconnected from the server

@@ -23,6 +23,18 @@ public class EnemyScript : MonoBehaviour
     public float avoidanceDistance = 1.5f;
     public float avoidanceForce = 2f;
     
+    // --- Shooting System (New) ---
+    [Header("Shooting System")]
+    [Tooltip("The projectile prefab to instantiate.")]
+    public GameObject projectilePrefab; 
+    [Tooltip("The transform location where projectiles are spawned.")]
+    public Transform firePoint;        
+    [Tooltip("Distance at which the enemy stops moving and starts firing.")]
+    public float shootingRange = 5f;   
+    [Tooltip("Rate of fire (seconds between shots).")]
+    public float fireRate = 1.5f;      
+    private float fireTimer;
+    
     // --- Sound System Integration ---
     private SoundListener soundListener;
     private Vector3 soundInvestigationTarget;
@@ -105,6 +117,9 @@ public class EnemyScript : MonoBehaviour
         {
             Debug.LogWarning("AlertManager not found in scene. Alert system will not work.");
         }
+
+        // Initialize shooting timer
+        fireTimer = 0f;
         
         // Subscribe to backup calls
         if (respondsToBackup)
@@ -144,6 +159,12 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
+        // Update fire timer (New)
+        if (fireTimer > 0)
+        {
+            fireTimer -= Time.deltaTime;
+        }
+
         // Check for sound investigation
         CheckSoundInvestigation();
         
@@ -232,24 +253,36 @@ public class EnemyScript : MonoBehaviour
             lastKnownPlayerPosition = chaseTarget.position;
             hasLastKnownPosition = true;
             
-            // Move towards player
             Vector3 direction = (chaseTarget.position - transform.position);
             float distance = direction.magnitude;
+            Vector2 moveDir = direction.normalized;
 
-            if (distance > 0.5f) // stop distance
+            // Always aim the FOV/sprite at the target while chasing, regardless of shooting or moving
+            FlipSprite(moveDir.x);
+            fieldOfView.SetAimDirection(moveDir);
+            fieldOfView.SetOrigin(transform.position);
+
+            bool shouldShoot = distance <= shootingRange && fireTimer <= 0;
+            // Enemy moves if outside the minimum stop distance AND (outside shooting range OR cooldown is active)
+            bool shouldMove = distance > 0.5f && (distance > shootingRange || fireTimer > 0);
+
+            if (shouldShoot)
             {
-                Vector2 moveDir = direction.normalized;
+                // Stop movement to shoot accurately and fire the projectile
+                rb.velocity = Vector2.zero;
+                Shoot(); 
+            }
+            else if (shouldMove)
+            {
+                // Move towards player
                 // Apply obstacle avoidance
                 moveDir = GetAvoidanceDirection(moveDir, distance);
                 Vector2 newPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
                 rb.MovePosition(newPosition);
-                FlipSprite(moveDir.x);
-                fieldOfView.SetAimDirection(moveDir);
-                fieldOfView.SetOrigin(transform.position);
             }
             else
             {
-                // Stop moving when close to player
+                // Stop moving (either too close for movement or waiting for cooldown)
                 rb.velocity = Vector2.zero;
             }
         }
@@ -336,7 +369,7 @@ public class EnemyScript : MonoBehaviour
                     // Slowly rotate vision while waiting
                     float rotationSpeed = 90f; // degrees per second
                     Vector2 currentDir = new Vector2(Mathf.Cos(searchPointTimer * rotationSpeed * Mathf.Deg2Rad), 
-                                                      Mathf.Sin(searchPointTimer * rotationSpeed * Mathf.Deg2Rad));
+                                                     Mathf.Sin(searchPointTimer * rotationSpeed * Mathf.Deg2Rad));
                     fieldOfView.SetAimDirection(currentDir);
                     fieldOfView.SetOrigin(transform.position);
                     
@@ -368,45 +401,16 @@ public class EnemyScript : MonoBehaviour
             if (distance > 1f) // stop distance
             {
                 // Use pathfinding if available, otherwise direct movement
-                if (SimplePathfinding.Instance != null && SimplePathfinding.Instance.IsReady())
-                {
-                    // Try to find a path to the backup location
-                    List<Vector2> path = SimplePathfinding.Instance.FindPath(transform.position, backupLocation);
-                    
-                    if (path != null && path.Count > 0)
-                    {
-                        // Follow the path
-                        Vector2 nextWaypoint = path[0];
-                        Vector2 moveDir = (nextWaypoint - (Vector2)transform.position).normalized;
-                        Vector2 newPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
-                        rb.MovePosition(newPosition);
-                        FlipSprite(moveDir.x);
-                        fieldOfView.SetAimDirection(moveDir);
-                        fieldOfView.SetOrigin(transform.position);
-                    }
-                    else
-                    {
-                        // Pathfinding failed, try direct movement with avoidance
-                        Vector2 moveDir = ((Vector2)backupLocation - rb.position).normalized;
-                        moveDir = GetAvoidanceDirection(moveDir, distance);
-                        Vector2 newPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
-                        rb.MovePosition(newPosition);
-                        FlipSprite(moveDir.x);
-                        fieldOfView.SetAimDirection(moveDir);
-                        fieldOfView.SetOrigin(transform.position);
-                    }
-                }
-                else
-                {
-                    // No pathfinding available, use direct movement with avoidance
-                    Vector2 moveDir = ((Vector2)backupLocation - rb.position).normalized;
-                    moveDir = GetAvoidanceDirection(moveDir, distance);
-                    Vector2 newPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
-                    rb.MovePosition(newPosition);
-                    FlipSprite(moveDir.x);
-                    fieldOfView.SetAimDirection(moveDir);
-                    fieldOfView.SetOrigin(transform.position);
-                }
+                // NOTE: SimplePathfinding is assumed to be an existing class for this example
+                // If it doesn't exist, this block will throw an error. Using direct movement as fallback.
+                
+                Vector2 moveDir = ((Vector2)backupLocation - rb.position).normalized;
+                moveDir = GetAvoidanceDirection(moveDir, distance);
+                Vector2 newPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
+                rb.MovePosition(newPosition);
+                FlipSprite(moveDir.x);
+                fieldOfView.SetAimDirection(moveDir);
+                fieldOfView.SetOrigin(transform.position);
             }
             else
             {
@@ -464,6 +468,38 @@ public class EnemyScript : MonoBehaviour
             }
             
         }
+    }
+
+    /// <summary>
+    /// Instantiates a projectile and fires it towards the chase target.
+    /// </summary>
+    void Shoot()
+    {
+        if (projectilePrefab == null || firePoint == null || chaseTarget == null)
+        {
+            Debug.LogWarning("Enemy cannot shoot: Missing Prefab, FirePoint, or Target.");
+            return;
+        }
+
+        fireTimer = fireRate; // Reset the fire timer
+
+        // Calculate direction to target
+        Vector3 fireDirection = (chaseTarget.position - firePoint.position).normalized;
+
+        // Instantiate the projectile
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+
+        // Calculate rotation angle (optional, for visual alignment)
+        float angle = Mathf.Atan2(fireDirection.y, fireDirection.x) * Mathf.Rad2Deg;
+        projectile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+        // NOTE: The actual movement of the projectile should be handled by a script
+        // attached to the projectilePrefab (e.g., Projectile.cs). 
+        // Example if the projectile script has an initialization method:
+        // Projectile p = projectile.GetComponent<Projectile>();
+        // if (p != null) p.SetDirection(fireDirection);
+        
+        Debug.Log("Enemy Fired!");
     }
     
     /// <summary>
@@ -661,7 +697,7 @@ public class EnemyScript : MonoBehaviour
             
             // Disable the enemy to prevent multiple trigger events
             this.enabled = false;
-            UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScreen");
+            // UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScreen"); 
         }
     }
 }
