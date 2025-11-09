@@ -434,12 +434,14 @@
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerFOV.cs"
 "Assets/Scripts/PlayerInput.cs"
+"Assets/Scripts/ProjectileLogic.cs"
 "Assets/Scripts/SimplePathfinding.cs"
 "Assets/Scripts/SoundEmitter.cs"
 "Assets/Scripts/SoundListener.cs"
 "Assets/Scripts/SurfaceDetector.cs"
 "Assets/Scripts/TextController.cs"
 "Assets/Scripts/TitleScreenScript.cs"
+"Assets/Scripts/WandController.cs"
 -langversion:9.0
 /deterministic
 /optimize+
