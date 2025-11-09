@@ -33,7 +33,7 @@ TagManager:
   - Layer 3
   - Black
   - Light
-  - 
+  - Pentagram
   - 
   - 
   - 
@@ -56,9 +56,9 @@ TagManager:
   - name: Layer 3
     uniqueID: 4189426099
     locked: 0
+  - name: Pentagram
+    uniqueID: 3883662893
+    locked: 0
   - name: Black
     uniqueID: 2248149003
-    locked: 0
-  - name: New Layer 6
-    uniqueID: 3883662893
     locked: 0
