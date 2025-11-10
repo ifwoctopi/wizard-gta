@@ -433,6 +433,7 @@
 "Assets/Scripts/NoiseManager.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerFOV.cs"
+"Assets/Scripts/PlayerHealth.cs"
 "Assets/Scripts/PlayerInput.cs"
 "Assets/Scripts/ProjectileLogic.cs"
 "Assets/Scripts/SimplePathfinding.cs"
