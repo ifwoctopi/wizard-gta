@@ -48,6 +48,9 @@ public class SoundEmitter : MonoBehaviour
     public bool enableEmitterDebugLogs = false;
     
     private SurfaceType lastSurfaceType = SurfaceType.Grass;
+    private bool isPlayerMoving = false;
+    private float lastMovementTime = 0f;
+    private float fadeOutDuration = 0.3f; // How fast it shrinks when stopping (in seconds)
     
     private void Awake()
     {
@@ -79,6 +82,15 @@ public class SoundEmitter : MonoBehaviour
                 UpdateFootstepVolume();
                 lastSurfaceType = currentSurface;
             }
+        }
+        
+        // Check if player is moving (by checking if footstep audio is playing)
+        bool wasMoving = isPlayerMoving;
+        isPlayerMoving = audioSource != null && audioSource.isPlaying;
+        
+        if (isPlayerMoving)
+        {
+            lastMovementTime = Time.time;
         }
     }
 
@@ -209,5 +221,122 @@ public class SoundEmitter : MonoBehaviour
             return detector.GetCurrentSurface();
         }
         return CurrentSurface; // Fallback to manual setting
+    }
+    
+    [Header("Debug Visualization")]
+    [Tooltip("Show the sound radius in the Scene view using Gizmos")]
+    public bool showSoundRadius = true;
+    
+    [Tooltip("Show how walls block the sound radius")]
+    public bool showWallBlocking = true;
+    
+    [Tooltip("Number of rays to cast for wall detection (more = smoother but slower)")]
+    [Range(8, 64)]
+    public int wallDetectionRays = 32;
+    
+    [Tooltip("Layer mask for walls that block sound")]
+    public LayerMask wallLayerMask = -1;
+    
+    /// <summary>
+    /// Draws the sound radius in the Scene view, showing where walls block it
+    /// </summary>
+    private void OnDrawGizmos()
+    {
+        if (!showSoundRadius) return;
+        
+        // Calculate fade out progress (0 = fully visible, 1 = fully hidden)
+        float timeSinceStopped = Time.time - lastMovementTime;
+        float fadeProgress = Mathf.Clamp01(timeSinceStopped / fadeOutDuration);
+        
+        // Only show if moving or within fade out period
+        if (!isPlayerMoving && fadeProgress >= 1f)
+        {
+            return; // Don't draw if stopped and fade out is complete
+        }
+        
+        SurfaceType surfaceToUse = useAutomaticSurfaceDetection ? GetDetectedSurface() : CurrentSurface;
+        float multiplier = GetSurfaceMultiplier(surfaceToUse);
+        float baseFinalRange = MaxSoundRange * multiplier;
+        
+        // Shrink the radius during fade out
+        float scaleFactor = 1f - fadeProgress; // Goes from 1.0 to 0.0
+        float finalRange = baseFinalRange * scaleFactor;
+        
+        // Fade out the alpha as well
+        float alphaMultiplier = scaleFactor;
+        
+        // If wall blocking visualization is enabled, draw the radius with wall occlusion
+        if (showWallBlocking)
+        {
+            DrawSoundRadiusWithWalls(finalRange, alphaMultiplier);
+        }
+        else
+        {
+            // Draw simple circles without wall checking
+            Gizmos.color = new Color(1f, 0.5f, 0f, 0.3f * alphaMultiplier); // Orange, semi-transparent
+            Gizmos.DrawWireSphere(transform.position, finalRange);
+            
+            Gizmos.color = new Color(1f, 0.3f, 0f, 0.5f * alphaMultiplier); // Darker orange
+            Gizmos.DrawWireSphere(transform.position, MaxSoundRange * scaleFactor);
+        }
+        
+        // Draw the center point (fade out too)
+        Gizmos.color = new Color(1f, 0.2f, 0f, 1f * alphaMultiplier); // Solid orange
+        Gizmos.DrawWireSphere(transform.position, 0.2f * scaleFactor);
+    }
+    
+    /// <summary>
+    /// Draws the sound radius showing where walls block it
+    /// </summary>
+    private void DrawSoundRadiusWithWalls(float maxRange, float alphaMultiplier = 1f)
+    {
+        Vector3 center = transform.position;
+        float angleStep = 360f / wallDetectionRays;
+        
+        // Get wall layer mask from NoiseManager if available, otherwise use the one set on this component
+        LayerMask effectiveWallMask = wallLayerMask;
+        if (NoiseManager.Instance != null)
+        {
+            effectiveWallMask = NoiseManager.Instance.WallLayerMask;
+        }
+        
+        // Draw rays in all directions, stopping at walls
+        for (int i = 0; i < wallDetectionRays; i++)
+        {
+            float angle = i * angleStep * Mathf.Deg2Rad;
+            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f);
+            
+            // Cast ray to check for walls
+            RaycastHit2D hit = Physics2D.Raycast(center, direction, maxRange, effectiveWallMask);
+            
+            float drawDistance;
+            Color rayColor;
+            
+            if (hit.collider != null)
+            {
+                // Hit a wall - draw up to the wall
+                drawDistance = hit.distance;
+                rayColor = new Color(1f, 0.3f, 0f, 0.6f * alphaMultiplier); // Darker orange for blocked
+                
+                // Draw a small marker at the wall hit point
+                Gizmos.color = new Color(1f, 0f, 0f, 0.8f * alphaMultiplier); // Red at wall
+                Gizmos.DrawWireSphere(hit.point, 0.15f);
+            }
+            else
+            {
+                // No wall - draw full range
+                drawDistance = maxRange;
+                rayColor = new Color(1f, 0.6f, 0f, 0.4f * alphaMultiplier); // Brighter orange for unblocked
+            }
+            
+            // Draw the ray
+            Gizmos.color = rayColor;
+            Vector3 endPoint = center + direction * drawDistance;
+            Gizmos.DrawLine(center, endPoint);
+        }
+        
+        // Draw the base range circle (unblocked)
+        Gizmos.color = new Color(1f, 0.3f, 0f, 0.3f * alphaMultiplier);
+        Gizmos.DrawWireSphere(center, MaxSoundRange);
     }
 }
