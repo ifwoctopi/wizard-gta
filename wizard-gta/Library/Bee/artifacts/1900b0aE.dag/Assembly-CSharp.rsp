@@ -438,6 +438,7 @@
 "Assets/Scripts/SimplePathfinding.cs"
 "Assets/Scripts/SoundEmitter.cs"
 "Assets/Scripts/SoundListener.cs"
+"Assets/Scripts/SpeedBoostOrb.cs"
 "Assets/Scripts/SurfaceDetector.cs"
 "Assets/Scripts/TextController.cs"
 "Assets/Scripts/TitleScreenScript.cs"

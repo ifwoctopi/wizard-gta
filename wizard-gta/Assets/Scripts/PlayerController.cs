@@ -9,6 +9,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private PlayerFOV playerFOV;
     
+    [Header("Speed Boost")]
+    [Tooltip("Base movement speed")]
+    private float baseMoveSpeed;
+    private float currentMoveSpeed;
+    private float speedBoostEndTime = 0f;
+    private bool hasSpeedBoost = false;
+    
     // --- Sound System Integration ---
     [Header("Sound Settings")]
     [Tooltip("Time between footstep sounds while moving")]
@@ -29,6 +36,10 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = new PlayerInput();
         rb = GetComponent<Rigidbody2D>();
+        
+        // Store base speed for speed boost system
+        baseMoveSpeed = moveSpeed;
+        currentMoveSpeed = moveSpeed;
         
         // Configure Rigidbody2D for proper physics
         if (rb != null)
@@ -60,6 +71,12 @@ public class PlayerController : MonoBehaviour
     {
         PlayerInput();
         FlipSprite(); // Flip sprite in Update for responsiveness
+        
+        // Check if speed boost has expired
+        if (hasSpeedBoost && Time.time >= speedBoostEndTime)
+        {
+            EndSpeedBoost();
+        }
         
         // --- Sound System: Footstep Detection ---
         bool isMoving = movement.magnitude > 0.1f;
@@ -100,7 +117,8 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
+        // Use currentMoveSpeed (which may be boosted)
+        rb.MovePosition(rb.position + movement * (currentMoveSpeed * Time.fixedDeltaTime));
     }
 
     private void FlipSprite()
@@ -156,5 +174,29 @@ public class PlayerController : MonoBehaviour
         {
             soundEmitter.EmitLoudNoise(intensity, range);
         }
+    }
+    
+    /// <summary>
+    /// Applies a temporary speed boost to the player
+    /// </summary>
+    /// <param name="multiplier">Speed multiplier (e.g., 2.0 = double speed)</param>
+    /// <param name="duration">Duration in seconds</param>
+    public void ApplySpeedBoost(float multiplier, float duration)
+    {
+        currentMoveSpeed = baseMoveSpeed * multiplier;
+        speedBoostEndTime = Time.time + duration;
+        hasSpeedBoost = true;
+        
+        Debug.Log($"[PlayerController] Speed boost applied! Speed: {currentMoveSpeed} (x{multiplier}) for {duration} seconds");
+    }
+    
+    /// <summary>
+    /// Ends the speed boost and returns to normal speed
+    /// </summary>
+    private void EndSpeedBoost()
+    {
+        currentMoveSpeed = baseMoveSpeed;
+        hasSpeedBoost = false;
+        Debug.Log("[PlayerController] Speed boost ended. Returning to normal speed.");
     }
 }
