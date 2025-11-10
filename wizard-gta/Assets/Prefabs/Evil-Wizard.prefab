@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 81310479569943528}
   - component: {fileID: 249369496890734450}
   - component: {fileID: 451718962358826773}
+  - component: {fileID: 6806325744390750955}
   m_Layer: 20
   m_Name: Evil-Wizard
   m_TagString: Player
@@ -282,6 +283,12 @@ MonoBehaviour:
   baseFootstepVolume: 0.5
   audioSource: {fileID: 0}
   enableEmitterDebugLogs: 0
+  showSoundRadius: 1
+  showWallBlocking: 1
+  wallDetectionRays: 32
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &451718962358826773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +319,23 @@ MonoBehaviour:
   metalLayerName: Metal
   glassLayerName: Glass
   enableDebugLogs: 1
+--- !u!114 &6806325744390750955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7313141976309071711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5603eff402f23e7478af0fd387016b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 3486189850075830725, guid: 88056544d5d532f4991c695c679080d8,
+    type: 3}
+  firePoint: {fileID: 8814317792802075789}
+  entityTag: Player
+  launchSpeed: 20
 --- !u!1001 &7856080591738172139
 PrefabInstance:
   m_ObjectHideFlags: 0

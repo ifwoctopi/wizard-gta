@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 2410107273466835691}
   - component: {fileID: 3418993310767482148}
   - component: {fileID: 8205749843455911120}
+  - component: {fileID: -3673652056579774332}
   m_Layer: 0
   m_Name: Enemy-Wizard
   m_TagString: Enemy
@@ -142,6 +143,16 @@ MonoBehaviour:
   - {fileID: 0}
   speed: 2
   playerTag: player
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  avoidanceDistance: 1.5
+  avoidanceForce: 2
+  searchRadius: 3
+  searchPoints: 8
+  returnToPatrolDelay: 10
+  callsForBackup: 1
+  respondsToBackup: 1
 --- !u!212 &4739468259652060004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -284,6 +295,33 @@ MonoBehaviour:
   waypoints: []
   speed: 2
   playerTag: player
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  avoidanceDistance: 1.5
+  avoidanceForce: 2
+  searchRadius: 3
+  searchPoints: 8
+  returnToPatrolDelay: 10
+  callsForBackup: 1
+  respondsToBackup: 1
+--- !u!114 &-3673652056579774332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5864255081139184876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5603eff402f23e7478af0fd387016b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 3486189850075830725, guid: 88056544d5d532f4991c695c679080d8,
+    type: 3}
+  firePoint: {fileID: 3170588265529264779}
+  entityTag: Enemy
+  launchSpeed: 20
 --- !u!1001 &8517261343745713987
 PrefabInstance:
   m_ObjectHideFlags: 0
