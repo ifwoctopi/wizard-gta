@@ -12476,7 +12476,7 @@ Transform:
   m_GameObject: {fileID: 512197683}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16214,7 +16214,7 @@ Transform:
   m_GameObject: {fileID: 829786125}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28081,7 +28081,7 @@ Transform:
   m_GameObject: {fileID: 1283197211}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38582,11 +38582,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5504185145772621385, guid: 03ddb69c39508be4b943995d70a27923,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6837526571837506396, guid: 03ddb69c39508be4b943995d70a27923,
         type: 3}
       propertyPath: enemy
       value: 
       objectReference: {fileID: 2096175012}
+    - target: {fileID: 6837526571837506396, guid: 03ddb69c39508be4b943995d70a27923,
+        type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 3670017
+      objectReference: {fileID: 0}
     - target: {fileID: 7313141976309071711, guid: 03ddb69c39508be4b943995d70a27923,
         type: 3}
       propertyPath: m_Name
