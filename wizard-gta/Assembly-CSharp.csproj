@@ -61,6 +61,8 @@
     <Compile Include="Assets\Scripts\TitleScreenScript.cs" />
     <Compile Include="Assets\Scripts\EnemyScript.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Scene\Script\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\SceneTeleporter.cs" />
+    <Compile Include="Assets\Scripts\SpeedBoostOrb.cs" />
     <Compile Include="Assets\Scripts\LoseScreenScript1.cs" />
     <Compile Include="Assets\Scripts\SoundEmitter.cs" />
     <Compile Include="Assets\Scripts\AlertManager.cs" />
