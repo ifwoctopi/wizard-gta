@@ -86,9 +86,10 @@ public class EnhancedVisionOrb : MonoBehaviour
         // Play sound effect
         if (audioSource != null && collectSound != null)
         {
-            audioSource.PlayOneShot(collectSound);
+            AudioSource.PlayClipAtPoint(collectSound, transform.position, 1f);
+
         }
-        
+
         // Spawn particle effect if available
         if (collectEffect != null)
         {

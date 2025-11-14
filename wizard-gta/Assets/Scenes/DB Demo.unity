@@ -11838,7 +11838,7 @@ MonoBehaviour:
   spreadAngle: 15
   duration: 10
   collectEffect: {fileID: 0}
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: fb94e43f7b62cd748aee16db4534f06a, type: 3}
 --- !u!58 &464187245
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -13032,7 +13032,7 @@ MonoBehaviour:
   fovMultiplier: 2
   duration: 10
   collectEffect: {fileID: 0}
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: fb94e43f7b62cd748aee16db4534f06a, type: 3}
 --- !u!212 &562761634
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35705,7 +35705,7 @@ MonoBehaviour:
   speedMultiplier: 2
   boostDuration: 10
   collectEffect: {fileID: 0}
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: fb94e43f7b62cd748aee16db4534f06a, type: 3}
 --- !u!58 &1878100035
 CircleCollider2D:
   m_ObjectHideFlags: 0

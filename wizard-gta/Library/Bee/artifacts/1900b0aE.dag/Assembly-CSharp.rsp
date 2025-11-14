@@ -443,6 +443,7 @@
 "Assets/Scripts/ProjectileLogic.cs"
 "Assets/Scripts/SceneTeleporter.cs"
 "Assets/Scripts/SceneTransition.cs"
+"Assets/Scripts/ScrollAudioController.cs"
 "Assets/Scripts/ScrollScript.cs"
 "Assets/Scripts/SimplePathfinding.cs"
 "Assets/Scripts/SoundEmitter.cs"

@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class SimpleScroll : MonoBehaviour
 {
+    [Header("Scroll Settings")]
     [SerializeField] private bool useTrigger = true;
     [SerializeField] private string playerTag = "Player";
 
-    [Tooltip("The GameObject to show when the player touches this scroll.")]
+    [Tooltip("The UI GameObject to show when the player touches this scroll.")]
     [SerializeField] private GameObject scrollObject;
+
+    [Header("Sound Effects")]
+    [Tooltip("Plays ONCE when the player first contacts the scroll.")]
+    public AudioSource paperSound;
+
+    [Tooltip("Loops until the player presses E to close the scroll.")]
+    public AudioSource magicLoopSound;
 
     private bool hasActivated = false;
     private bool scrollOpen = false;
@@ -35,9 +43,18 @@ public class SimpleScroll : MonoBehaviour
     {
         if (scrollObject != null)
         {
+            // Show scroll UI
             scrollObject.SetActive(true);
             scrollOpen = true;
             hasActivated = true;
+
+            // Play paper sound once
+            if (paperSound != null)
+                paperSound.Play();
+
+            // Start looping magic sound
+            if (magicLoopSound != null && !magicLoopSound.isPlaying)
+                magicLoopSound.Play();
         }
         else
         {
@@ -50,8 +67,14 @@ public class SimpleScroll : MonoBehaviour
         // If the scroll is open, pressing E hides it
         if (scrollOpen && Input.GetKeyDown(KeyCode.E))
         {
+            // Hide scroll
             scrollObject.SetActive(false);
             scrollOpen = false;
+
+            // Stop magic loop sound
+            if (magicLoopSound != null)
+                magicLoopSound.Stop();
         }
     }
 }
+

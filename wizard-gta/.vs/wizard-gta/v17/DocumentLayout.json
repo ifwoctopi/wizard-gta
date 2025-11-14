@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|c:\\users\\shart\\documents\\github\\wizard-gta\\wizard-gta\\assets\\scripts\\turnoffscroll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|c:\\users\\shart\\documents\\github\\wizard-gta\\wizard-gta\\assets\\scripts\\scrollscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scrollscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|c:\\users\\shart\\documents\\github\\wizard-gta\\wizard-gta\\assets\\scripts\\scrollaudiocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scrollaudiocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\assets\\scripts\\multishotorb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multishotorb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\assets\\scripts\\speedboostorb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\speedboostorb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\assets\\scripts\\turnoffscroll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\turnoffscroll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|c:\\users\\shart\\documents\\github\\wizard-gta\\wizard-gta\\assets\\scripts\\scrollscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scrollscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\assets\\scripts\\enhancedvisionorb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enhancedvisionorb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8B689188-21EE-CFF0-4E9D-A3CF759E964E}|Assembly-CSharp.csproj|C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\assets\\scripts\\sceneteleporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,17 +38,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ScrollScript.cs",
               "DocumentMoniker": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\Assets\\Scripts\\ScrollScript.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ScrollScript.cs",
               "ToolTip": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\Assets\\Scripts\\ScrollScript.cs",
               "RelativeToolTip": "Assets\\Scripts\\ScrollScript.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAswE8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-14T17:48:53.927Z",
               "IsPinned": true,
@@ -40,7 +56,56 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "ScrollAudioController.cs",
+              "DocumentMoniker": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\Assets\\Scripts\\ScrollAudioController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ScrollAudioController.cs",
+              "ToolTip": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\Assets\\Scripts\\ScrollAudioController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ScrollAudioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T19:44:40.028Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MultishotOrb.cs",
+              "DocumentMoniker": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\Assets\\Scripts\\MultishotOrb.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MultishotOrb.cs",
+              "ToolTip": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\Assets\\Scripts\\MultishotOrb.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MultishotOrb.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAIBQwEoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T19:21:38.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EnhancedVisionOrb.cs",
+              "DocumentMoniker": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\Assets\\Scripts\\EnhancedVisionOrb.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnhancedVisionOrb.cs",
+              "ToolTip": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\Assets\\Scripts\\EnhancedVisionOrb.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnhancedVisionOrb.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAAAFkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T19:21:21.58Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SpeedBoostOrb.cs",
+              "DocumentMoniker": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\Assets\\Scripts\\SpeedBoostOrb.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SpeedBoostOrb.cs",
+              "ToolTip": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\Assets\\Scripts\\SpeedBoostOrb.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SpeedBoostOrb.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAuwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T19:20:35.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "TurnOffScroll.cs",
               "DocumentMoniker": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\Assets\\Scripts\\TurnOffScroll.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\TurnOffScroll.cs",
@@ -48,12 +113,11 @@
               "RelativeToolTip": "Assets\\Scripts\\TurnOffScroll.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T18:50:35.053Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T18:50:35.053Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "SceneTeleporter.cs",
               "DocumentMoniker": "C:\\Users\\shart\\Documents\\GitHub\\wizard-gta\\wizard-gta\\Assets\\Scripts\\SceneTeleporter.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SceneTeleporter.cs",
@@ -61,8 +125,7 @@
               "RelativeToolTip": "Assets\\Scripts\\SceneTeleporter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAF4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T17:44:04.806Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T17:44:04.806Z"
             }
           ]
         }
