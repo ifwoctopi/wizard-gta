@@ -79,6 +79,8 @@
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Scene\Script\PropsAltar.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Scene\Script\SpriteColorAnimation.cs" />
+    <Compile Include="Assets\Scripts\LevelData.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\PlayerFOV.cs" />
     <Compile Include="Assets\Scripts\TitleScreenScript.cs" />
     <Compile Include="Assets\Scripts\EnemyScript.cs" />

@@ -17152,6 +17152,60 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 40, y: 30}
   m_EdgeRadius: 0
+--- !u!1 &1963808485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1963808487}
+  - component: {fileID: 1963808486}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1963808486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963808485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e710b8f1b2c98418dbb100dcc15cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 5864255081139184876, guid: d049b76a960739f4e97c53c1c4bcb8e4,
+    type: 3}
+  numberOfEnemiesToSpawn: 5
+  minSpawnX: -10
+  maxSpawnX: 10
+  minSpawnY: -5
+  maxSpawnY: 5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
+--- !u!4 &1963808487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963808485}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 299.6242, y: -19.508236, z: -0.33005804}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2099687468
 GameObject:
   m_ObjectHideFlags: 0
@@ -17303,3 +17357,4 @@ SceneRoots:
   - {fileID: 1590873041}
   - {fileID: 354286462}
   - {fileID: 655337836}
+  - {fileID: 1963808487}
