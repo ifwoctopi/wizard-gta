@@ -62,6 +62,7 @@ public class AlertManager : MonoBehaviour
     public static event Action<float> OnHeatLevelChanged;
     public static event Action<Vector3> OnLastKnownPositionUpdated;
     public static event Action<Vector3, GameObject> OnBackupCalled; // position, guard who called
+    public static event Action<Vector3, float> OnPlayerDetectedGlobal; // position, intensity - triggers all enemies to investigate
     
     // Struct for storing sound memories
     [System.Serializable]
@@ -139,6 +140,9 @@ public class AlertManager : MonoBehaviour
         OnAlertLevelChanged?.Invoke(currentAlertLevel);
         OnHeatLevelChanged?.Invoke(currentHeatLevel);
         OnLastKnownPositionUpdated?.Invoke(playerPosition);
+        
+        // Notify all enemies to investigate the player position
+        OnPlayerDetectedGlobal?.Invoke(playerPosition, detectionIntensity);
         
         if (enableDebugLogs)
         {

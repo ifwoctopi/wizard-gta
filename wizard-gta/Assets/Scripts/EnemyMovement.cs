@@ -92,12 +92,50 @@ public class EnemyMovement : MonoBehaviour
         
         // --- Alert System Setup ---
         alertManager = AlertManager.Instance;
-        if (alertManager == null)
+        if (alertManager != null)
+        {
+            // Subscribe to global player detection event
+            AlertManager.OnPlayerDetectedGlobal += OnGlobalPlayerDetected;
+        }
+        else
         {
             Debug.LogWarning("AlertManager not found in scene. Alert system will not work properly.");
         }
 
         Debug.Log($"AI spawned: Starting **{currentState}** state. 🔴");
+    }
+    
+    void OnDestroy()
+    {
+        // Unsubscribe from events to prevent memory leaks
+        if (alertManager != null)
+        {
+            AlertManager.OnPlayerDetectedGlobal -= OnGlobalPlayerDetected;
+        }
+    }
+    
+    /// <summary>
+    /// Called when any enemy detects the player - all enemies should investigate
+    /// </summary>
+    void OnGlobalPlayerDetected(Vector3 playerPosition, float detectionIntensity)
+    {
+        // Don't respond if we're already chasing or investigating
+        if (currentState == EnemyState.Chase || currentState == EnemyState.Investigate)
+        {
+            return;
+        }
+        
+        // Update our last known position
+        lastKnownPlayerPosition = playerPosition;
+        
+        // If detection intensity is high (full detection), transition to investigate
+        // This will make all enemies move toward the player's last known position
+        if (detectionIntensity >= 0.5f)
+        {
+            Debug.Log($"{gameObject.name} received global alert! Investigating player position at {playerPosition}");
+            currentState = EnemyState.Investigate;
+            searchTimer = searchDuration; // Reset search timer
+        }
     }
 
     void Update()
