@@ -6,6 +6,10 @@ using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [Header("Enable/Disable")]
+    [Tooltip("Uncheck this to disable enemy spawning")]
+    [SerializeField] private bool enableSpawning = false;
+    
     // Assign your enemy prefab in the Inspector
     [Header("Enemy Configuration")]
     [SerializeField] private GameObject enemyPrefab; 
@@ -38,6 +42,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // Check if spawning is enabled
+        if (!enableSpawning)
+        {
+            return;
+        }
+        
         if (levelsToSpawnOn.Contains(scene.name))
         {
             // --- NEW: Find and load dynamic boundary data ---
