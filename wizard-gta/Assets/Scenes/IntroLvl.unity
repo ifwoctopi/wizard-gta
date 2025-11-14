@@ -3506,6 +3506,11 @@ PrefabInstance:
       propertyPath: baseFootstepVolume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2293320878878169874, guid: 03ddb69c39508be4b943995d70a27923,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2609052920313361133, guid: 03ddb69c39508be4b943995d70a27923,
         type: 3}
       propertyPath: m_LocalPosition.z
