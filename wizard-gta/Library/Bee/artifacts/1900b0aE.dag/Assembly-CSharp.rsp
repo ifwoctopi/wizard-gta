@@ -429,9 +429,11 @@
 "Assets/Scripts/EnemyMovement.cs"
 "Assets/Scripts/EnemyScript.cs"
 "Assets/Scripts/EnemySpawner.cs"
+"Assets/Scripts/EnhancedVisionOrb.cs"
 "Assets/Scripts/FieldOfView.cs"
 "Assets/Scripts/LevelData.cs"
 "Assets/Scripts/LoseScreenScript1.cs"
+"Assets/Scripts/MultishotOrb.cs"
 "Assets/Scripts/NoiseManager.cs"
 "Assets/Scripts/PersistentObject.cs"
 "Assets/Scripts/PlayerController.cs"
@@ -440,6 +442,8 @@
 "Assets/Scripts/PlayerInput.cs"
 "Assets/Scripts/ProjectileLogic.cs"
 "Assets/Scripts/SceneTeleporter.cs"
+"Assets/Scripts/SceneTransition.cs"
+"Assets/Scripts/ScrollScript.cs"
 "Assets/Scripts/SimplePathfinding.cs"
 "Assets/Scripts/SoundEmitter.cs"
 "Assets/Scripts/SoundListener.cs"
@@ -447,6 +451,7 @@
 "Assets/Scripts/SurfaceDetector.cs"
 "Assets/Scripts/TextController.cs"
 "Assets/Scripts/TitleScreenScript.cs"
+"Assets/Scripts/TurnOffScroll.cs"
 "Assets/Scripts/WandController.cs"
 -langversion:9.0
 /deterministic
