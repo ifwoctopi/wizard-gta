@@ -16,6 +16,12 @@ public class PlayerFOV : MonoBehaviour
     public int rayCount = 50;
     public LayerMask obstacleMask;
     public Transform enemy;
+    
+    // Store original FOV for powerup system
+    private float originalFov;
+    
+    // Store current aim direction to recalculate when FOV changes
+    private Vector3 currentAimDirection = Vector3.right;
 
     [Header("Visualization")] public bool showCone = true; // toggle this in the inspector
 
@@ -30,6 +36,39 @@ public class PlayerFOV : MonoBehaviour
 
         // Set up material
         visionMaterial = GetComponent<MeshRenderer>().material;
+        
+        // Store original FOV
+        originalFov = fov;
+    }
+    
+    /// <summary>
+    /// Activates enhanced vision (full 360-degree circle) for a specified duration.
+    /// </summary>
+    public void ActivateEnhancedVision(float fovMultiplier, float duration)
+    {
+        // Set FOV to 360 degrees for full circle vision
+        fov = 360f;
+        
+        // Recalculate starting angle - for full circle, start at 0 degrees
+        startingAngle = 0f;
+        
+        // Cancel any existing enhanced vision coroutine
+        StopAllCoroutines();
+        StartCoroutine(DeactivateEnhancedVisionAfterDuration(duration));
+    }
+    
+    /// <summary>
+    /// Deactivates enhanced vision after the duration expires.
+    /// </summary>
+    private System.Collections.IEnumerator DeactivateEnhancedVisionAfterDuration(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        fov = originalFov; // Reset to original FOV
+        
+        // Recalculate starting angle with original FOV based on current aim direction
+        startingAngle = GetAngleFromVectorFloat(currentAimDirection) - fov / 2f;
+        
+        Debug.Log("Enhanced vision expired - FOV back to normal");
     }
 
     void LateUpdate()
@@ -156,8 +195,11 @@ public class PlayerFOV : MonoBehaviour
 
     public void SetAimDirection(Vector3 aimDirection)
     {
-        startingAngle = GetAngleFromVectorFloat(aimDirection) - fov / 2f;
+        // Store the current aim direction
+        currentAimDirection = aimDirection;
         
+        // Recalculate starting angle with current FOV
+        startingAngle = GetAngleFromVectorFloat(aimDirection) - fov / 2f;
     }
     
     public static Vector3 GetVectorFromAngle(float angle)

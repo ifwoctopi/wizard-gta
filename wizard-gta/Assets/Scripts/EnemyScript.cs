@@ -111,6 +111,47 @@ public class EnemyScript : MonoBehaviour
         {
             AlertManager.OnBackupCalled += OnBackupCallReceived;
         }
+        
+        // Subscribe to global player detection event
+        AlertManager.OnPlayerDetectedGlobal += OnGlobalPlayerDetected;
+        
+        // Validate waypoints at start (helps catch issues when copying between scenes)
+        ValidateWaypoints();
+    }
+    
+    /// <summary>
+    /// Validates waypoints and provides helpful error messages if they're missing
+    /// </summary>
+    private void ValidateWaypoints()
+    {
+        if (waypoints == null || waypoints.Length == 0)
+        {
+            Debug.LogWarning($"{gameObject.name}: No waypoints assigned! Enemy will not patrol. " +
+                "Assign waypoints in the Inspector.");
+            return;
+        }
+        
+        int nullCount = 0;
+        for (int i = 0; i < waypoints.Length; i++)
+        {
+            if (waypoints[i] == null)
+            {
+                nullCount++;
+                Debug.LogError($"{gameObject.name}: Waypoint at index {i} is NULL! " +
+                    "This usually happens when copying enemies between scenes. " +
+                    "You need to copy the waypoint GameObjects too, or reassign them in the Inspector.");
+            }
+        }
+        
+        if (nullCount > 0)
+        {
+            Debug.LogError($"{gameObject.name}: {nullCount} out of {waypoints.Length} waypoints are null! " +
+                "The enemy will try to skip null waypoints, but patrol may not work correctly.");
+        }
+        else if (waypoints.Length > 0)
+        {
+            Debug.Log($"{gameObject.name}: {waypoints.Length} waypoint(s) validated successfully.");
+        }
     }
     
     void OnDestroy()
@@ -119,6 +160,39 @@ public class EnemyScript : MonoBehaviour
         if (respondsToBackup)
         {
             AlertManager.OnBackupCalled -= OnBackupCallReceived;
+        }
+        
+        AlertManager.OnPlayerDetectedGlobal -= OnGlobalPlayerDetected;
+    }
+    
+    /// <summary>
+    /// Called when any enemy detects the player - all enemies should investigate
+    /// </summary>
+    void OnGlobalPlayerDetected(Vector3 playerPosition, float detectionIntensity)
+    {
+        // Don't respond if we're already chasing
+        if (isChasing)
+        {
+            return;
+        }
+        
+        // Update our last known position and start investigating
+        lastKnownPlayerPosition = playerPosition;
+        hasLastKnownPosition = true;
+        
+        // If detection intensity is high (full detection), start investigating
+        if (detectionIntensity >= 0.5f)
+        {
+            Debug.Log($"{gameObject.name} received global alert! Investigating player position at {playerPosition}");
+            investigatingLastPosition = true;
+            memoryTimer = memoryDuration;
+            isSearching = false; // Reset search state
+            currentSearchPoint = 0;
+            searchPointTimer = 0f;
+            
+            // Cancel lower priority activities
+            investigatingSound = false;
+            respondingToBackup = false;
         }
     }
     
@@ -444,10 +518,57 @@ public class EnemyScript : MonoBehaviour
         else
         {
             // Patrol waypoints
-            if (waypoints.Length == 0) return;
+            if (waypoints == null || waypoints.Length == 0)
+            {
+                Debug.LogWarning($"{gameObject.name}: No waypoints assigned! Cannot patrol. Check Inspector.");
+                return;
+            }
+
+            // Safety check: ensure currentWaypoint is valid
+            if (currentWaypoint < 0 || currentWaypoint >= waypoints.Length)
+            {
+                Debug.LogWarning($"{gameObject.name}: Invalid waypoint index {currentWaypoint}. Resetting to 0.");
+                currentWaypoint = 0;
+            }
 
             Transform target = waypoints[currentWaypoint];
+            
+            // Check if waypoint reference is null (common when copying between scenes)
+            if (target == null)
+            {
+                Debug.LogError($"{gameObject.name}: Waypoint at index {currentWaypoint} is NULL! " +
+                    "This usually happens when copying enemies between scenes. " +
+                    "The waypoint GameObjects need to be in the scene. Skipping to next waypoint.");
+                
+                // Try to find a valid waypoint
+                bool foundValid = false;
+                for (int i = 0; i < waypoints.Length; i++)
+                {
+                    if (waypoints[i] != null)
+                    {
+                        currentWaypoint = i;
+                        target = waypoints[i];
+                        foundValid = true;
+                        break;
+                    }
+                }
+                
+                if (!foundValid)
+                {
+                    Debug.LogError($"{gameObject.name}: All waypoints are null! Cannot patrol.");
+                    return;
+                }
+            }
+            
             float distanceToWaypoint = Vector3.Distance(transform.position, target.position);
+            
+            // Debug: Log distance periodically to see if enemy is getting closer
+            if (Time.frameCount % 60 == 0) // Log every ~1 second (assuming 60 FPS)
+            {
+                Debug.Log($"{gameObject.name}: Distance to waypoint {currentWaypoint}: {distanceToWaypoint:F2} units. " +
+                    $"Enemy pos: {transform.position}, Waypoint pos: {target.position}");
+            }
+            
             Vector2 moveDir = (target.position - transform.position).normalized;
             // Apply obstacle avoidance
             moveDir = GetAvoidanceDirection(moveDir, distanceToWaypoint);
@@ -457,10 +578,13 @@ public class EnemyScript : MonoBehaviour
             fieldOfView.SetAimDirection(moveDir);
             fieldOfView.SetOrigin(transform.position);
             
-
-            if (Vector3.Distance(transform.position, target.position) < 0.1f)
+            // Check if reached waypoint - exact position match (X and Y must match exactly)
+            if (Mathf.Approximately(transform.position.x, target.position.x) && 
+                Mathf.Approximately(transform.position.y, target.position.y))
             {
+                int oldWaypoint = currentWaypoint;
                 currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
+                Debug.Log($"{gameObject.name}: Reached waypoint {oldWaypoint} (exact position match), moving to waypoint {currentWaypoint}");
             }
             
         }

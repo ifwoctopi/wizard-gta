@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
+using System.Collections; 
 
 /// <summary>
 /// Handles magical shooting and now also handles the input events for shooting,
@@ -20,16 +21,21 @@ public class WandController : MonoBehaviour
     
     [Tooltip("The speed at which the projectile should travel.")]
     public float launchSpeed = 20f; 
+    
+    [Header("Multishot Settings")]
+    [Tooltip("Number of projectiles to fire when multishot is active (default: 1)")]
+    public int multishotCount = 1;
+    
+    [Tooltip("Angle spread between projectiles in degrees (e.g., 15 = 15 degrees between each shot)")]
+    public float multishotSpread = 15f;
 
     // --- Input System Integration ---
-    private PlayerInput playerInput;
     private Camera mainCamera;
     private Collider2D entityCollider; 
 
     void Awake()
     {
-        playerInput = new PlayerInput();
-        mainCamera = Camera.main; 
+        mainCamera = Camera.main;
         // Get the entity's own collider for collision ignoring
         entityCollider = GetComponent<Collider2D>(); 
 
@@ -43,31 +49,15 @@ public class WandController : MonoBehaviour
         }
     }
 
-    void OnEnable()
+    void Update()
     {
-        // Only the player needs input enabled
-        if (entityTag == "Player")
+        // Only the player needs input handling
+        if (entityTag == "Player" && Mouse.current.leftButton.wasPressedThisFrame)
         {
-            playerInput.Enable();
-            playerInput.Actions.Shoot.performed += OnShootPerformed;
+            Debug.Log($"{entityTag} pressed left mouse button to shoot!");
+            // Player aims via mouse position
+            Shoot(); 
         }
-    }
-
-    void OnDisable()
-    {
-        if (entityTag == "Player")
-        {
-            playerInput.Actions.Shoot.performed -= OnShootPerformed;
-            playerInput.Disable();
-        }
-    }
-
-    // --- Player Input Execution ---
-    private void OnShootPerformed(InputAction.CallbackContext context)
-    {
-        Debug.Log($"{entityTag} pressed {context.control.displayName} to shoot!");
-        // Player aims via mouse position
-        Shoot(); 
     }
     
     // --------------------------------------------------------------------------------------------------
@@ -115,6 +105,34 @@ public class WandController : MonoBehaviour
     /// </summary>
     private void LaunchProjectile(Vector2 targetDirection)
     {
+        // If multishot is active, fire multiple projectiles
+        if (multishotCount > 1)
+        {
+            float baseAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+            float totalSpread = (multishotCount - 1) * multishotSpread;
+            float startAngle = baseAngle - (totalSpread / 2f);
+            
+            for (int i = 0; i < multishotCount; i++)
+            {
+                float currentAngle = startAngle + (i * multishotSpread);
+                float angleRad = currentAngle * Mathf.Deg2Rad;
+                Vector2 spreadDirection = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
+                
+                LaunchSingleProjectile(spreadDirection);
+            }
+        }
+        else
+        {
+            // Normal single shot
+            LaunchSingleProjectile(targetDirection);
+        }
+    }
+    
+    /// <summary>
+    /// Launches a single projectile in the given direction.
+    /// </summary>
+    private void LaunchSingleProjectile(Vector2 targetDirection)
+    {
         // 1. Calculate rotation based on the direction (for 2D sprites)
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
@@ -139,6 +157,29 @@ public class WandController : MonoBehaviour
             // Pass the entity's Collider2D to the projectile for collision ignoring
             projectileScript.SetShooter(entityTag, entityCollider); 
         }
+    }
+    
+    /// <summary>
+    /// Activates multishot for a specified duration.
+    /// </summary>
+    public void ActivateMultishot(int shotCount, float spread, float duration)
+    {
+        multishotCount = shotCount;
+        multishotSpread = spread;
+        
+        // Cancel any existing multishot coroutine
+        StopAllCoroutines();
+        StartCoroutine(DeactivateMultishotAfterDuration(duration));
+    }
+    
+    /// <summary>
+    /// Deactivates multishot after the duration expires.
+    /// </summary>
+    private System.Collections.IEnumerator DeactivateMultishotAfterDuration(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        multishotCount = 1; // Reset to single shot
+        Debug.Log("Multishot expired - back to single shot");
     }
 
     /// <summary>
