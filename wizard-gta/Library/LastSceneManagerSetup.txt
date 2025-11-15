@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Vision-Cone.unity
+- path: Assets/Scenes/DB Demo.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

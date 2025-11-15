@@ -29,15 +29,6 @@ public class SimpleScroll : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (useTrigger) return;
-
-        if (collision.gameObject.CompareTag(playerTag) && !hasActivated)
-        {
-            ActivateScroll();
-        }
-    }
 
     private void ActivateScroll()
     {
